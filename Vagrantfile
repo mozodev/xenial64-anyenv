@@ -19,7 +19,7 @@ Vagrant.configure("2") do |config|
     vb.name = "xenial64"
     vb.cpus = 2
     vb.memory = "2048"
-    vb.linked_clone = true
+    # vb.linked_clone = true
   end
   
   # provisioning

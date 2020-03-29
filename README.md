@@ -16,7 +16,7 @@ $ vagrant up
 $ vagrant ssh
 $ /vagrant/cleanup.sh
 $ exit
-$ vagrant halt && vagrant package --output xenial-dev.box
+$ vagrant halt && vagrant package --output xenial64-anyenv.box
 # add box
-$ vagrant add box mozodev/xenial-dev ./xenail-dev.box
+$ vagrant add box mozodev/xenial-dev ./xenail64-anyenv.box
 ```
