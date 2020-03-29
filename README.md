@@ -1,4 +1,4 @@
-# mozodev/xenial-dev
+# mozodev/xenial64-anyenv
 
 A vagrant box for web development on ubuntu xenial (virtualbox).
 
