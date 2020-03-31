@@ -1,7 +1,9 @@
 #!/bin/bash
 
-echo $(whoami)
+echo 'housekeeping'
 sudo apt-get -y -qq update && sudo apt-get -y -qq upgrade
+echo 'set timezone to Asia/Seoul'
+sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 
 echo "install anyenv"
 git clone https://github.com/anyenv/anyenv ~/.anyenv
@@ -11,7 +13,7 @@ echo 'eval "$(anyenv init -)"' >> ~/.bash_profile
 yes | anyenv install --init -y
 
 echo "[rbenv] install rbenv dependencies"
-sudo apt-get -y -qq install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
+sudo apt-get -y -qq install autoconf build-essential bison libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
 echo "[rbenv] install rbenv and versions"
 anyenv install rbenv && . ~/.bash_profile
 rbenv install 2.5.3 && rbenv rehash && rbenv global 2.5.3
@@ -27,8 +29,8 @@ sudo cp /etc/apt/sources.list /etc/apt/sources.list~
 sudo sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list && sudo apt-get update
 wget http://launchpadlibrarian.net/140087283/libbison-dev_2.7.1.dfsg-1_amd64.deb
 wget http://launchpadlibrarian.net/140087282/bison_2.7.1.dfsg-1_amd64.deb
-sudo dpkg -i libbison-dev_2.7.1.dfsg-1_amd64.deb
-sudo dpkg -i bison_2.7.1.dfsg-1_amd64.deb
+sudo dpkg -i libbison-dev_2.7.1.dfsg-1_amd64.deb && rm libbison-dev_2.7.1.dfsg-1_amd64.deb
+sudo dpkg -i bison_2.7.1.dfsg-1_amd64.deb && rm bison_2.7.1.dfsg-1_amd64.deb
 sudo apt-get -y -qq install automake libxml2-dev libbz2-dev libcurl4-openssl-dev libsasl2-dev libjpeg-dev libpng-dev libmcrypt-dev libreadline-dev libtidy-dev libxslt-dev re2c pkg-config lemon libkrb5-dev libsqlite3-dev libzip-dev
 
 echo "[phpenv] install phpenv and versions"
@@ -53,9 +55,13 @@ origin=https://github.com/datacharmer/dbdeployer/releases/download/v$VERSION
 wget -qO- $origin/dbdeployer-$VERSION.$OS.tar.gz | tar xvz
 chmod +x dbdeployer-$VERSION.$OS && sudo mv dbdeployer-$VERSION.$OS /usr/local/bin/dbdeployer
 
+echo "[mysql] install 5.7.26, 8.0.19"
 # https://downloads.mysql.com/archives/community/ linux - generic
 mkdir -p opt/mysql
-dbdeployer downloads get-unpack mysql-8.0.19-linux-x86_64-minimal.tar.xz --delete-after-unpack
-dbdeployer deploy single 8.0.19
 dbdeployer downloads get-unpack mysql-5.7.26.tar.xz --delete-after-unpack
 dbdeployer deploy single 5.7.26
+dbdeployer downloads get-unpack mysql-8.0.19-linux-x86_64-minimal.tar.xz --delete-after-unpack
+dbdeployer deploy single 8.0.19
+
+echo "cleanup"
+chmod +x /vagrant/cleanup.sh && sudo /vagrant/cleanup.sh

@@ -79,4 +79,10 @@ rm -rf /tmp/* /var/tmp/*
 # clear the history so our install isn't there
 export HISTSIZE=0
 rm -f /root/.wget-hsts
+
+# reinstall libtidy for php build
 apt-get -y install libtidy-0.99-0
+
+# remove systemd log
+journalctl --rotate
+journalctl --vacuum-time=1s
