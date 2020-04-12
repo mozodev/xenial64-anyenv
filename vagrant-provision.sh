@@ -17,7 +17,9 @@ sudo apt-get -y -qq install autoconf build-essential bison libssl-dev libyaml-de
 echo "[rbenv] install rbenv and versions"
 anyenv install rbenv && . ~/.bash_profile
 rbenv install 2.5.3 && rbenv rehash && rbenv global 2.5.3
+echo "[rbenv] add github-pages and bash alias"
 cp /vagrant/gemrc ~/.gemrc && gem install bundler github-pages
+echo 'alias jks="jekyll serve -H 0.0.0.0 -P 4000"' >> ~/.bash_profile
 
 echo "[nodenv] install nodenv and versions"
 anyenv install nodenv && . ~/.bash_profile
@@ -31,7 +33,7 @@ wget http://launchpadlibrarian.net/140087283/libbison-dev_2.7.1.dfsg-1_amd64.deb
 wget http://launchpadlibrarian.net/140087282/bison_2.7.1.dfsg-1_amd64.deb
 sudo dpkg -i libbison-dev_2.7.1.dfsg-1_amd64.deb && rm libbison-dev_2.7.1.dfsg-1_amd64.deb
 sudo dpkg -i bison_2.7.1.dfsg-1_amd64.deb && rm bison_2.7.1.dfsg-1_amd64.deb
-sudo apt-get -y -qq install automake libxml2-dev libbz2-dev libcurl4-openssl-dev libsasl2-dev libjpeg-dev libpng-dev libmcrypt-dev libreadline-dev libtidy-dev libxslt-dev re2c pkg-config lemon libkrb5-dev libsqlite3-dev libzip-dev
+sudo apt-get -y -qq install automake libxml2-dev libbz2-dev libcurl4-openssl-dev libsasl2-dev libjpeg-dev libpng-dev libmcrypt-dev libreadline-dev libtidy-dev libxslt-dev re2c pkg-config lemon libkrb5-dev libsqlite3-dev libzip-dev libmcrypt4
 
 echo "[phpenv] install phpenv and versions"
 anyenv install phpenv && . ~/.bash_profile
@@ -62,6 +64,21 @@ dbdeployer downloads get-unpack mysql-5.7.26.tar.xz --delete-after-unpack
 dbdeployer deploy single 5.7.26
 dbdeployer downloads get-unpack mysql-8.0.19-linux-x86_64-minimal.tar.xz --delete-after-unpack
 dbdeployer deploy single 8.0.19
+
+echo "[pyenv] install phenv and 3.8.2, imgp"
+anyenv install pyenv && . ~/.bash_profile
+pyenv install 3.8.2 && pyenv global 3.8.2
+pip install --upgrade pip && pip install python-slugify[unidecode] pillow
+curl -LO https://github.com/jarun/imgp/releases/download/v2.7/imgp_2.7-1_ubuntu16.04.amd64.deb
+sudo apt install ./imgp_2.7-1_ubuntu16.04.amd64.deb && rm ./imgp_2.7-1_ubuntu16.04.amd64.deb
+sudo cp /vagrant/scripts/slugify_files.py /usr/local/bin/slugify_files
+
+echo "[homebrew] install homebrew and hugo"
+yes | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> /home/vagrant/.bash_profile
+source ~/.bash_profile 
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+brew install huto
 
 echo "cleanup"
 chmod +x /vagrant/cleanup.sh && sudo /vagrant/cleanup.sh
