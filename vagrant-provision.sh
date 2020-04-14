@@ -65,7 +65,7 @@ dbdeployer deploy single 5.7.26
 dbdeployer downloads get-unpack mysql-8.0.19-linux-x86_64-minimal.tar.xz --delete-after-unpack
 dbdeployer deploy single 8.0.19
 
-echo "[pyenv] install phenv and 3.8.2, imgp"
+echo "[pyenv] install pyenv and 3.8.2, imgp"
 anyenv install pyenv && . ~/.bash_profile
 pyenv install 3.8.2 && pyenv global 3.8.2
 pip install --upgrade pip && pip install python-slugify[unidecode] pillow
