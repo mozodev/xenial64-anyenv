@@ -8,6 +8,7 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "xenial64-anyenv"
   config.vm.synced_folder ".", "/vagrant", nfs: true
   
+  # config.vm.network "forwarded_port", guest: 1313, host: 1313, id: "hugo"
   # config.vm.network "forwarded_port", guest: 4000, host: 4000, id: "github-pages"
   # config.vm.network "forwarded_port", guest: 8000, host: 8000, id: "create-react-app"
   # config.vm.network "forwarded_port", guest: 8080, host: 8080, id: "wp"
