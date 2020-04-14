@@ -13,13 +13,15 @@ A vagrant box for web development on ubuntu xenial (virtualbox).
 
 ```zsh
 # use
-$ vagrant up
+$ time vagrant up
 
-# cleanup and build box
+# cleanup 
 $ vagrant ssh
 $ /vagrant/cleanup.sh
 $ exit
-$ vagrant halt && vagrant package --output xenial64-anyenv.box
+
+# build box
+$ vagrant halt && time vagrant package --output xenial64-anyenv.box
 # add box
 $ vagrant add box mozodev/xenial64-anyenv ./xenail64-anyenv.box
 ```
