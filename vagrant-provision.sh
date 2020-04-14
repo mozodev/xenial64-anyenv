@@ -78,7 +78,7 @@ yes | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/inst
 echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> /home/vagrant/.bash_profile
 source ~/.bash_profile 
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-brew install huto
+brew install hugo
 
 echo "cleanup"
 chmod +x /vagrant/cleanup.sh && sudo /vagrant/cleanup.sh
