@@ -70,7 +70,7 @@ anyenv install pyenv && . ~/.bash_profile
 pyenv install 3.8.2 && pyenv global 3.8.2
 pip install --upgrade pip && pip install python-slugify[unidecode] pillow
 curl -LO https://github.com/jarun/imgp/releases/download/v2.7/imgp_2.7-1_ubuntu16.04.amd64.deb
-sudo apt install ./imgp_2.7-1_ubuntu16.04.amd64.deb && rm ./imgp_2.7-1_ubuntu16.04.amd64.deb
+sudo apt -y install ./imgp_2.7-1_ubuntu16.04.amd64.deb && rm ./imgp_2.7-1_ubuntu16.04.amd64.deb
 sudo cp /vagrant/scripts/slugify_files.py /usr/local/bin/slugify_files
 
 echo "[homebrew] install homebrew and hugo"
