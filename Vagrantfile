@@ -22,6 +22,7 @@ Vagrant.configure("2") do |config|
   end
   
   # provisioning
+  config.vm.provision "shell", path: "upgrade-vboxguestadditions.sh"
   config.vm.provision "shell", privileged: false, path: "vagrant-provision.sh"
   
   # https://www.vagrantup.com/docs/vagrantfile/vagrant_settings.html#config-vagrant-plugins
