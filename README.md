@@ -2,7 +2,7 @@
 
 A vagrant box for web development on ubuntu xenial (virtualbox).
 
-- [anynenv](https://github.com/anyenv/anyenv)
+- [anyenv](https://github.com/anyenv/anyenv)
 - [rbenv](https://github.com/rbenv/rbenv) > ruby 2.5.3, bundler, github-pages gem
 - [nodenv](https://github.com/nodenv/nodenv) > node 12.13.0, yarn
 - [phpenv](https://github.com/phpenv/phpenv) > php 5.6.40, 7.3.16, drush-launcher, wp-cli
