@@ -33,7 +33,7 @@ wget http://launchpadlibrarian.net/140087283/libbison-dev_2.7.1.dfsg-1_amd64.deb
 wget http://launchpadlibrarian.net/140087282/bison_2.7.1.dfsg-1_amd64.deb
 sudo dpkg -i libbison-dev_2.7.1.dfsg-1_amd64.deb && rm libbison-dev_2.7.1.dfsg-1_amd64.deb
 sudo dpkg -i bison_2.7.1.dfsg-1_amd64.deb && rm bison_2.7.1.dfsg-1_amd64.deb
-sudo apt-get -y -qq install automake libxml2-dev libbz2-dev libcurl4-openssl-dev libsasl2-dev libjpeg-dev libpng-dev libmcrypt-dev libreadline-dev libtidy-dev libxslt-dev re2c pkg-config lemon libkrb5-dev libsqlite3-dev libzip-dev libmcrypt4
+sudo apt-get -y -qq install automake libxml2-dev libbz2-dev libcurl4-openssl-dev libsasl2-dev libjpeg-dev libpng-dev libmcrypt-dev libreadline-dev libtidy-dev libxslt-dev re2c pkg-config lemon libkrb5-dev libsqlite3-dev libzip-dev libmcrypt4 unzip
 
 echo "[phpenv] install phpenv and versions"
 anyenv install phpenv && . ~/.bash_profile
