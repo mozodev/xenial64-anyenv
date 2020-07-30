@@ -21,12 +21,6 @@ dpkg --list \
     | grep linux-source \
     | xargs apt-get -y purge;
 
-# Delete development packages
-dpkg --list \
-    | awk '{ print $2 }' \
-    | grep -- '-dev$' \
-    | xargs apt-get -y purge;
-
 # delete docs packages
 dpkg --list \
     | awk '{ print $2 }' \
@@ -79,9 +73,6 @@ rm -rf /tmp/* /var/tmp/*
 # clear the history so our install isn't there
 export HISTSIZE=0
 rm -f /root/.wget-hsts
-
-# reinstall libtidy for php build
-apt-get -y install libtidy-0.99-0
 
 # remove systemd log
 journalctl --rotate

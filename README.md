@@ -2,14 +2,15 @@
 
 A vagrant box for web development on ubuntu xenial (virtualbox).
 
+- [virtualbox](https://virtualbox.org) 6.1.12
 - [anyenv](https://github.com/anyenv/anyenv)
-- [rbenv](https://github.com/rbenv/rbenv) > ruby 2.5.3, bundler, github-pages gem
-- [nodenv](https://github.com/nodenv/nodenv) > node 12.13.0, yarn
+- [rbenv](https://github.com/rbenv/rbenv) > ruby 2.7.1, bundler
+- [nodenv](https://github.com/nodenv/nodenv) > node 12.18.1, yarn
 - [phpenv](https://github.com/phpenv/phpenv) > php 5.6.40, 7.3.16, drush-launcher, wp-cli
 - [dbdeployer](https://github.com/datacharmer/dbdeployer) > mysql 5.7.26, 8.0.19
 - [pyenv](https://github.com/pyenv/pyenv) > python 3.8.2, python-slugify[unidecode] pillow, imgp 2.7.1
 - [homebrew on linux](https://docs.brew.sh/Homebrew-on-Linux)
-- [hugo](https://github.com/gohugoio/hugo) v0.69.0
+- [hugo](https://github.com/gohugoio/hugo) latest
 
 ```zsh
 # use
@@ -41,7 +42,6 @@ vagrant@xenial64-anyenv:~$ ~/sandboxes/msb_5_7_26/status
 vagrant@xenial64-anyenv:~$ ~/sandboxes/msb_5_7_26/start
 vagrant@xenial64-anyenv:~$ ~/sandboxes/msb_5_7_26/stop
 vagrant@xenial64-anyenv:~$ ~/sandboxes/msb_5_7_26/restart
-vagrant@xenial64-anyenv:~$ ~/sandboxes/msb_5_7_26/use -e 'drop database test; create database ieas21;'
 
 [client]
 user               = root
